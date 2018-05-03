@@ -1,0 +1,56 @@
+:root {
+  /* fonts */
+  --main-font-family: 'Open Sans', sans-serif;
+  --heading-font-family: 'Montserrat', sans-serif;
+  --heading-font-serif-1: 'Playfair Display', serif;
+  --heading-font-serif-2: 'Lora', serif;
+
+  /* colors */
+  --dark-primary-color: #0288D1;
+  --light-primary-color: #B3E5FC;
+  --primary-color: #03A9F4;
+  --accent-color: #FF9800;
+  --text-icons-white: #FFFFFF;
+  --primary-text: #212121;
+  --secondary-text: #757575;
+  --divider-color: #BDBDBD;
+
+  --red: #E85454;
+  --yellow-lighter: #FCECA4;
+  --blue: #90C3D4;
+
+  --almost-white: #f7f7f7;
+  --gray-darker: #696969;
+  --gray: #ccc;
+  --gray-lighter: #E8E8E8;
+  --gray-lightest: #F0F0F0;
+  --almost-black: #282828;
+
+  /* sizes */
+  --space: 1rem;
+
+  /* font-weights */
+  --light: 300;
+  --medium: 600;
+  --heavy: 900;
+
+  /* transitions */
+  --smooth: ease-in-out 0.25s;
+  --smooth-border: border 0.5s ease-in-out;
+
+  /* box-shadows */
+  --smooth-shadow: 0 2px 4px var(--almost-white), 0 2px 4px rgba(0,0,0,0.24);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1 rem = 10 px */
+}
+
+body {
+  background: var(--almost-white);
+}
