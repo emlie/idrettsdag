@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>testing</title>
+  <!-- use foundation framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css">
+</head>
+<body>
+
+
+
+
+
+  <!-- connect to firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDAsmJ3zSoP0RdOjuRp2yPL1ysUbx-hOMo",
+    authDomain: "idrettsdag-27242.firebaseapp.com",
+    databaseURL: "https://idrettsdag-27242.firebaseio.com",
+    projectId: "idrettsdag-27242",
+    storageBucket: "idrettsdag-27242.appspot.com",
+    messagingSenderId: "387039026634"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+
+
+<h2>Register a school</h2>
+<!-- register a school -->
+<form id="formSchool">
+  <label for="schoolName">school name:</label>
+  <input type="text" name="schoolName" id="inpSchool">
+  <button class="button">OK</button>
+</form>
+
+
+<br>
+
+
+<h2>Register a sport</h2>
+<!-- register a sport -->
+<form id="formSport">
+  <label for="sportName">sport name:</label>
+  <input type="text" name="sportName" id="inpSport">
+  <button class="button">OK</button>
+</form>
+
+
+<br><br>
+
+
+<!-- show schools -->
+<table>
+  <thead>
+    <tr>
+      <td>schools</td>
+    </tr>
+  </thead>
+  <tbody id="tBodySchools">
+  </tbody>
+</table>
+
+
+<br><br>
+
+
+<!-- show sports -->
+<table>
+  <thead>
+    <tr>
+      <td>sports</td>
+    </tr>
+  </thead>
+  <tbody id="tBodySports">
+
+  </tbody>
+</table>
+
+
+<br><br><br><br>
+
+
+<h2>Register a team</h2>
+<!-- register a team -->
+<form id="formTeam">
+  <label for="teamName">team name:</label>
+  <input type="text" name="teamName" id="inpTeamName">
+  <label for="selSchool">select school:</label>
+  <select class="" name="selSchool" id="selSchool">
+    <option>--- select school ---</option>
+  </select>
+  <label for="className">class name:</label>
+  <input type="text" name="className" id="inpClassName">
+  <label for="selSport">select sport:</label>
+  <select class="" name="selSport" id="selSport">
+    <option>--- select sport ---</option>
+  </select>
+  <button class="button">OK</button>
+</form>
+
+
+<br><br>
+
+
+<!-- show teams -->
+<table>
+  <thead>
+    <tr>
+      <td>team name</td>
+      <td>school</td>
+      <td>class</td>
+      <td>sport</td>
+    </tr>
+  </thead>
+  <tbody id="tBodyTeams">
+  </tbody>
+</table>
+
+
+
+
+
+<!-- own external js -->
+<script src="testing.js"></script>
+
+
+</body>
+</html>
