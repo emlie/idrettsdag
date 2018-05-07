@@ -111,11 +111,13 @@
 <button class="button" onclick="showAllTeams()">show all teams</button>
 <button class="button" onclick="showTennisTeams()">show tennis teams</button>
 <button class="button" onclick="showBadmintonTeams()">show badminton teams</button>
+<!--
 <label for="selSchoolTeam">select school team:</label>
 <select id="selSchoolTeam" onchange="selSchoolTeam" name="selSchoolTeam">
   <option value="1">a school</option>
   <option value="2">another school</option>
 </select>
+-->
 
 
 <br><br>
@@ -132,6 +134,40 @@
     </tr>
   </thead>
   <tbody id="tBodyTeams">
+  </tbody>
+</table>
+
+
+<br><br><br><br>
+
+
+<!-- register a result -->
+<h2>Register a result</h2>
+<!-- register a team -->
+<form id="formResult">
+  <label for="selTeam">select team:</label>
+  <select class="" name="selTeam" id="selTeam">
+    <option>--- select team ---</option>
+  </select>
+  <label for="aResult">points:</label>
+  <input type="number" name="aResult" id="inpPoints">
+  <button class="button">OK</button>
+</form>
+
+
+<br><br>
+
+
+<!-- show results -->
+<h3>Latest results</h3>
+<table>
+  <thead>
+    <tr>
+      <td>team name</td>
+      <td>points</td>
+    </tr>
+  </thead>
+  <tbody id="tBodyResults">
   </tbody>
 </table>
 

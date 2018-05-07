@@ -14,12 +14,18 @@ var inpClassName = document.getElementById("inpClassName");
 var selSport = document.getElementById("selSport");
 var tBodyTeams = document.getElementById("tBodyTeams");
 
+var formResult = document.getElementById("formResult");
+var selTeam = document.getElementById("selTeam");
+var inpPoints = document.getElementById("inpPoints");
+var tBodyResults = document.getElementById("tBodyResults");
+
 
 // get databases
 var database = firebase.database();
 var schoolsDB = database.ref("schools");
 var sportsDB = database.ref("sports");
 var teamsDB = database.ref("teams");
+var resultsDB = database.ref("results");
 
 
 
@@ -63,6 +69,8 @@ function getSchools(snapshot) {
   </option>
   `;
 };
+
+
 
 
 
@@ -127,9 +135,6 @@ function regTeam(event) {
 };
 
 
-
-
-
 // listener function for displaying teams
 function getTeams(snapshot) {
   console.log("testing getTeams");
@@ -151,7 +156,14 @@ function getTeams(snapshot) {
         <td>${theRegdTeam.class}</td>
         <td>${theRegdTeam.sport}</td>
       </tr>
-      `
+      `;
+
+    // show regdTeam in selTeam
+    selTeam.innerHTML += `
+    <option value="${regdTeam}">
+      ${theRegdTeam.name}
+    </option>
+    `;
   });
 
   /* use another listener function to get data from schoolsDB and use as foreign key
@@ -177,30 +189,34 @@ function getTeams(snapshot) {
 
 
 
-// register listener functions for sorting teams
-function showAllTeams() {
+// listener function for registering a result
+function addResult(event){
+  event.preventDefault();
+  console.log("testing regResult");
 
+  var chosenTeam = selTeam.value;
+  var points = inpPoints.value;
+  inpPoints.value = "";
+
+  resultsDB.push({
+    "team" : chosenTeam,
+    "points" : points
+  });
 };
 
-function showTennisTeams() {
-  console.log("testing showTennisTeams");
-};
 
-function showBadmintonTeams() {
+// listener function for showing the results
+function showResult(snapshot){
+  console.log("testing showResult");
 
-};
+  var result = snapshot.val();
 
-function selSchoolTeam(){
-  console.log("testing selSchoolTeam");
-
-  var selSchoolTeam = document.getElementById("selSchoolTeam");
-  var chosenSchoolTeam = selSchoolTeam.value;
-
-  tBodyTeams.innerHTML = "";
-  teamsDB
-  .orderByChild("school")
-  .equalTo(chosenSchoolTeam)
-  .on("child_added", getTeams);
+  tBodyResults.innerHTML += `
+  <tr>
+    <td>${result.team}</td>
+    <td>+${result.points}</td>
+  </tr>
+  `;
 };
 
 
@@ -212,8 +228,10 @@ function selSchoolTeam(){
 formSchool.onsubmit = addSchool;
 formSport.onsubmit = addSport;
 formTeam.onsubmit = regTeam;
+formResult.onsubmit = addResult;
 
 // when database changes (when new data is added), run function
 schoolsDB.on("child_added", getSchools);
 sportsDB.on("child_added", getSports);
 teamsDB.on("child_added", getTeams);
+resultsDB.on("child_added", showResult);
