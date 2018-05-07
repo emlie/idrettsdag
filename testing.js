@@ -34,15 +34,10 @@ function addSchool(event) {
   var school = inpSchool.value;
   inpSchool.value = ""; // clear after submit
 
-  // create new empty object in schoolsDB + the value
-  var newSchool = database.ref("schools/" + school);
-
-  // create the object
-  newSchool.set(
-    {
+  // create the new regdSchool object in schoolsDB with random primary key
+  schoolsDB.push({
       "name" : school
-    }
-  );
+    });
 };
 
 
@@ -51,26 +46,27 @@ function getSchools(snapshot) {
   console.log("testing getSchools");
 
   var regdSchool = snapshot.key; // get primary key
+  var theRegdSchool = snapshot.val(); // get data from object (not primary key)
 
   // show schools in table
   tBodySchools.innerHTML += `
   <tr>
-    <td>${regdSchool}</td>
+    <td>${theRegdSchool.name}</td>
   </tr>
   `;
 
   // show schools in dropdown menu
+  // save option value as primary key
   selSchool.innerHTML += `
   <option value="${regdSchool}">
-    ${regdSchool}
+    ${theRegdSchool.name}
   </option>
   `;
 };
 
 
 
-
-
+// same method for sports, as with schools
 // listener function for registering a sport
 function addSport(event) {
   event.preventDefault();
@@ -79,31 +75,28 @@ function addSport(event) {
   var sport = inpSport.value;
   inpSport.value = "";
 
-  var newSport = database.ref("sports/" + sport);
-
-  newSport.set(
-    {
+  sportsDB.push({
       "name" : sport
-    }
-  );
+    });
 };
 
 
 // listener function for displaying sports
 function getSports(snapshot) {
-  console.log("tetsing getSports");
+  console.log("testing getSports");
 
   var regdSport = snapshot.key;
+  var theRegdSport = snapshot.val();
 
   tBodySports.innerHTML += `
   <tr>
-    <td>${regdSport}</td>
+    <td>${theRegdSport.name}</td>
   </tr>
   `;
 
   selSport.innerHTML += `
   <option value="${regdSport}">
-    ${regdSport}
+    ${theRegdSport.name}
   </option>
   `;
 };
@@ -125,16 +118,12 @@ function regTeam(event) {
   inpTeamName.value = "";
   inpClassName.value = "";
 
-  var newTeam = database.ref("teams/" + team);
-
-  newTeam.set(
-    {
+  teamsDB.push({
       "name" : team,
       "school" : chosenSchool,
       "class" : className,
       "sport" : chosenSport
-    }
-  );
+    });
 };
 
 
@@ -147,19 +136,71 @@ function getTeams(snapshot) {
 
   var regdTeam = snapshot.key;
   var theRegdTeam = snapshot.val(); // the object from teamsDB
-  var teamName = theRegdTeam.name;
-  var teamSchool = theRegdTeam.school;
-  var teamClass = theRegdTeam.class;
-  var teamSport = theRegdTeam.sport;
 
-  tBodyTeams.innerHTML += `
-  <tr>
-    <td>${teamName}</td>
-    <td>${teamSchool}</td>
-    <td>${teamClass}</td>
-    <td>${teamSport}</td>
-  </tr>
-  `;
+  // use another listener function to get data from schoolsDB and use as foreign key
+  var schoolsRef = database.ref("schools/" + theRegdTeam.school);
+  schoolsRef.on("value", function(snapshotSchools){
+    console.log("testing schoolsRef");
+    var theSchool = snapshotSchools.val();
+
+    // show regdTeam in table of teams
+      tBodyTeams.innerHTML += `
+      <tr>
+        <td>${theRegdTeam.name}</td>
+        <td>${theSchool.name}</td>
+        <td>${theRegdTeam.class}</td>
+        <td>${theRegdTeam.sport}</td>
+      </tr>
+      `
+  });
+
+  /* use another listener function to get data from schoolsDB and use as foreign key
+  var sportsRef = database.ref("sports/" + theRegdTeam.sport);
+  sportsRef.on("value", function(snapshotSports){
+    console.log("testing sportsRef");
+    var theSport = snapshotSports.val();
+  });
+  */
+
+  /* show regdTeam in table of teams
+    tBodyTeams.innerHTML += `
+    <tr>
+      <td>${theRegdTeam.name}</td>
+      <td>${theSchool.name}</td>
+      <td>${theRegdTeam.class}</td>
+      <td>${theSport.name}</td>
+    </tr>
+    `*/
+};
+
+
+
+
+
+// register listener functions for sorting teams
+function showAllTeams() {
+
+};
+
+function showTennisTeams() {
+  console.log("testing showTennisTeams");
+};
+
+function showBadmintonTeams() {
+
+};
+
+function selSchoolTeam(){
+  console.log("testing selSchoolTeam");
+
+  var selSchoolTeam = document.getElementById("selSchoolTeam");
+  var chosenSchoolTeam = selSchoolTeam.value;
+
+  tBodyTeams.innerHTML = "";
+  teamsDB
+  .orderByChild("school")
+  .equalTo(chosenSchoolTeam)
+  .on("child_added", getTeams);
 };
 
 
@@ -172,7 +213,7 @@ formSchool.onsubmit = addSchool;
 formSport.onsubmit = addSport;
 formTeam.onsubmit = regTeam;
 
-// when database changes (when new data is added), rund function
+// when database changes (when new data is added), run function
 schoolsDB.on("child_added", getSchools);
 sportsDB.on("child_added", getSports);
 teamsDB.on("child_added", getTeams);
