@@ -173,16 +173,6 @@ function getTeams(snapshot) {
     var theSport = snapshotSports.val();
   });
   */
-
-  /* show regdTeam in table of teams
-    tBodyTeams.innerHTML += `
-    <tr>
-      <td>${theRegdTeam.name}</td>
-      <td>${theSchool.name}</td>
-      <td>${theRegdTeam.class}</td>
-      <td>${theSport.name}</td>
-    </tr>
-    `*/
 };
 
 
