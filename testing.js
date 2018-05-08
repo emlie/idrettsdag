@@ -209,14 +209,21 @@ function addResult(event){
 function showResult(snapshot){
   console.log("testing showResult");
 
-  var result = snapshot.val();
+  var theRegdResult = snapshot.val();
+
+  // use another listener function to get data from schoolsDB and use as foreign key
+  var resultsRef = database.ref("teams/" + theRegdResult.team);
+  resultsRef.on("value", function(snapshotResults){
+    console.log("testing resultsRef");
+    var theResult = snapshotResults.val();
 
   tBodyResults.innerHTML += `
   <tr>
-    <td>${result.team}</td>
-    <td>+${result.points}</td>
+    <td>${theResult.name}</td>
+    <td>+${theRegdResult.points}</td>
   </tr>
   `;
+  });
 };
 
 
