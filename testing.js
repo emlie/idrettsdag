@@ -252,6 +252,12 @@ function orderByTeamResult(){
   resultsDB.orderByChild("team")
            .equalTo(theSelTeamResult)
            .on("child_added", getResult);
+
+  // if no team is selected, show all results from all teams
+  if (theSelTeamResult == "allResults") {
+    tBodyResults.innerHTML = "";
+    resultsDB.on("child_added", getResult);
+  };
 };
 
 
