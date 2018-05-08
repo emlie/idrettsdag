@@ -1,4 +1,4 @@
-// get HTML elements
+/* –––––––––––––––––––––––––– GET HTML ELEMENTS –––––––––––––––––––––––––– */
 var formSchool = document.getElementById("formSchool");
 var inpSchool = document.getElementById("inpSchool");
 var tBodySchools = document.getElementById("tBodySchools");
@@ -19,8 +19,10 @@ var selTeam = document.getElementById("selTeam");
 var inpPoints = document.getElementById("inpPoints");
 var tBodyResults = document.getElementById("tBodyResults");
 
+var selTeamResult = document.getElementById("selTeamResult");
 
-// get databases
+
+/* –––––––––––––––––––––––––– GET DATABASES –––––––––––––––––––––––––– */
 var database = firebase.database();
 var schoolsDB = database.ref("schools");
 var sportsDB = database.ref("sports");
@@ -31,6 +33,7 @@ var resultsDB = database.ref("results");
 
 
 
+/* –––––––––––––––––––––––––– PUSH AND GET DATA –––––––––––––––––––––––––– */
 // listener function for registering a school
 function addSchool(event) {
   event.preventDefault(); // prevent reloading page
@@ -42,8 +45,8 @@ function addSchool(event) {
 
   // create the new regdSchool object in schoolsDB with random primary key
   schoolsDB.push({
-      "name" : school
-    });
+    "name" : school
+  });
 };
 
 
@@ -57,7 +60,7 @@ function getSchools(snapshot) {
   // show schools in table
   tBodySchools.innerHTML += `
   <tr>
-    <td>${theRegdSchool.name}</td>
+  <td>${theRegdSchool.name}</td>
   </tr>
   `;
 
@@ -65,7 +68,7 @@ function getSchools(snapshot) {
   // save option value as primary key
   selSchool.innerHTML += `
   <option value="${regdSchool}">
-    ${theRegdSchool.name}
+  ${theRegdSchool.name}
   </option>
   `;
 };
@@ -84,8 +87,8 @@ function addSport(event) {
   inpSport.value = "";
 
   sportsDB.push({
-      "name" : sport
-    });
+    "name" : sport
+  });
 };
 
 
@@ -98,13 +101,13 @@ function getSports(snapshot) {
 
   tBodySports.innerHTML += `
   <tr>
-    <td>${theRegdSport.name}</td>
+  <td>${theRegdSport.name}</td>
   </tr>
   `;
 
   selSport.innerHTML += `
   <option value="${regdSport}">
-    ${theRegdSport.name}
+  ${theRegdSport.name}
   </option>
   `;
 };
@@ -127,11 +130,11 @@ function regTeam(event) {
   inpClassName.value = "";
 
   teamsDB.push({
-      "name" : team,
-      "school" : chosenSchool,
-      "class" : className,
-      "sport" : chosenSport
-    });
+    "name" : team,
+    "school" : chosenSchool,
+    "class" : className,
+    "sport" : chosenSport
+  });
 };
 
 
@@ -148,7 +151,7 @@ function getTeams(snapshot) {
     console.log("testing schoolsRef");
     var theSchool = snapshotSchools.val();
 
-    // use a thhird listener function to get data from sportsDB and use as foreign key
+    // use a third listener function to get data from sportsDB and use as foreign key
     var sportsRef = database.ref("sports/" + theRegdTeam.sport);
     sportsRef.on("value", function(snapshotSports){
       console.log("testing sportsRef");
@@ -170,6 +173,14 @@ function getTeams(snapshot) {
       ${theRegdTeam.name}
       </option>
       `;
+
+      // show teams in selTeamResult
+      selTeamResult.innerHTML += `
+      <option value="${regdTeam}">
+      ${theRegdTeam.name}
+      </option>
+      `;
+
     });
   });
 };
@@ -206,20 +217,37 @@ function showResult(snapshot){
     console.log("testing resultsRef");
     var theResult = snapshotResults.val();
 
-  tBodyResults.innerHTML += `
-  <tr>
+    tBodyResults.innerHTML += `
+    <tr>
     <td>${theResult.name}</td>
     <td>+ ${theRegdResult.points}</td>
-  </tr>
-  `;
+    </tr>
+    `;
   });
 };
 
 
 
 
+/* –––––––––––––––––––––––––– SORT DATA –––––––––––––––––––––––––– */
+// order results by team
+function orderByTeamResult(){
+  console.log("testing selTeamResult");
 
-// register functions
+  var theSelTeamResult = selTeamResult.value;
+
+  // show the results of the selected team
+  tBodyResults.innerHTML = "";
+  resultsDB.orderByChild("team")
+           .equalTo(theSelTeamResult)
+           .on("child_added", showResult);
+};
+
+
+
+
+
+/* –––––––––––––––––––––––––– REGISTER FUNCTIONS –––––––––––––––––––––––––– */
 // when form is submitted, run function
 formSchool.onsubmit = addSchool;
 formSport.onsubmit = addSport;
