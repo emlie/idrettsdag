@@ -220,7 +220,7 @@ function showResult(snapshot){
   tBodyResults.innerHTML += `
   <tr>
     <td>${theResult.name}</td>
-    <td>+${theRegdResult.points}</td>
+    <td>+ ${theRegdResult.points}</td>
   </tr>
   `;
   });
