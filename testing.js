@@ -140,39 +140,38 @@ function getTeams(snapshot) {
   console.log("testing getTeams");
 
   var regdTeam = snapshot.key;
-  var theRegdTeam = snapshot.val(); // the object from teamsDB
+  var theRegdTeam = snapshot.val();
 
-  // use another listener function to get data from schoolsDB and use as foreign key
+  // use a second listener function to get data from schoolsDB and use as foreign key
   var schoolsRef = database.ref("schools/" + theRegdTeam.school);
   schoolsRef.on("value", function(snapshotSchools){
     console.log("testing schoolsRef");
     var theSchool = snapshotSchools.val();
 
-    // show regdTeam in table of teams
+    // use a thhird listener function to get data from sportsDB and use as foreign key
+    var sportsRef = database.ref("sports/" + theRegdTeam.sport);
+    sportsRef.on("value", function(snapshotSports){
+      console.log("testing sportsRef");
+      var theSport = snapshotSports.val();
+
+      // show regdTeam in table of teams
       tBodyTeams.innerHTML += `
       <tr>
-        <td>${theRegdTeam.name}</td>
-        <td>${theSchool.name}</td>
-        <td>${theRegdTeam.class}</td>
-        <td>${theRegdTeam.sport}</td>
+      <td>${theRegdTeam.name}</td>
+      <td>${theSchool.name}</td>
+      <td>${theRegdTeam.class}</td>
+      <td>${theSport.name}</td>
       </tr>
       `;
 
-    // show regdTeam in selTeam
-    selTeam.innerHTML += `
-    <option value="${regdTeam}">
+      // show regdTeam in selTeam
+      selTeam.innerHTML += `
+      <option value="${regdTeam}">
       ${theRegdTeam.name}
-    </option>
-    `;
+      </option>
+      `;
+    });
   });
-
-  /* use another listener function to get data from schoolsDB and use as foreign key
-  var sportsRef = database.ref("sports/" + theRegdTeam.sport);
-  sportsRef.on("value", function(snapshotSports){
-    console.log("testing sportsRef");
-    var theSport = snapshotSports.val();
-  });
-  */
 };
 
 
