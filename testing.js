@@ -33,6 +33,11 @@ var resultsDB = database.ref("results");
 
 
 
+
+
+
+
+
 /* –––––––––––––––––––––––––– PUSH AND GET DATA –––––––––––––––––––––––––– */
 // listener function for registering a school
 function addSchool(event) {
@@ -77,8 +82,8 @@ function getSchools(snapshot) {
 
 
 
-// same method for sports, as with schools
 // listener function for registering a sport
+// same method for sports, as with schools
 function addSport(event) {
   event.preventDefault();
   console.log("testing addSport");
@@ -117,9 +122,9 @@ function getSports(snapshot) {
 
 
 // listener function for registering a team
-function regTeam(event) {
+function addTeam(event) {
   event.preventDefault();
-  console.log("testing regTeam");
+  console.log("testing addTeam");
 
   var team = inpTeamName.value;
   var chosenSchool = selSchool.value;
@@ -139,6 +144,7 @@ function regTeam(event) {
 
 
 // listener function for displaying teams
+// you need three listener functions in one in order to get all variables needed in the table of teams
 function getTeams(snapshot) {
   console.log("testing getTeams");
 
@@ -206,8 +212,8 @@ function addResult(event){
 
 
 // listener function for showing the results
-function showResult(snapshot){
-  console.log("testing showResult");
+function getResult(snapshot){
+  console.log("testing getResult");
 
   var theRegdResult = snapshot.val();
 
@@ -229,6 +235,11 @@ function showResult(snapshot){
 
 
 
+
+
+
+
+
 /* –––––––––––––––––––––––––– SORT DATA –––––––––––––––––––––––––– */
 // order results by team
 function orderByTeamResult(){
@@ -240,8 +251,13 @@ function orderByTeamResult(){
   tBodyResults.innerHTML = "";
   resultsDB.orderByChild("team")
            .equalTo(theSelTeamResult)
-           .on("child_added", showResult);
+           .on("child_added", getResult);
 };
+
+
+
+
+
 
 
 
@@ -251,11 +267,11 @@ function orderByTeamResult(){
 // when form is submitted, run function
 formSchool.onsubmit = addSchool;
 formSport.onsubmit = addSport;
-formTeam.onsubmit = regTeam;
+formTeam.onsubmit = addTeam;
 formResult.onsubmit = addResult;
 
 // when database changes (when new data is added), run function
 schoolsDB.on("child_added", getSchools);
 sportsDB.on("child_added", getSports);
 teamsDB.on("child_added", getTeams);
-resultsDB.on("child_added", showResult);
+resultsDB.on("child_added", getResult);
