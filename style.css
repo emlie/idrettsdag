@@ -77,14 +77,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: var(--almost-white);
-}
-
-header {
-  width: 100vw;
-  height: 5rem;
-  margin: 0 auto;
-  border: 1px solid cyan;
+  background: var(--gray-lighter);
 }
 
 nav {
@@ -94,7 +87,11 @@ nav {
   position: relative;
   z-index: 10000;
   background: var(--almost-white);
-  border-bottom: 0.1rem solid black;
+  /*
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  */
+  box-shadow: var(--smooth-light-shadow);
   transition: var(--smooth);
 }
 
@@ -106,12 +103,12 @@ nav ul {
   justify-content: flex-start;
   background: inherit;
   font-family: var(--main-ff-ss-1);
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   font-weight: normal;
   text-align: left;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.25rem;
   color: var(--almost-black);
   list-style-type: none;
   transition: var(--smooth);
@@ -119,7 +116,7 @@ nav ul {
 
 nav ul li {
   flex: 0.1 1 auto; /* grow shrink basis */
-  /* padding: 1.5rem 0 1.5rem 0; */
+  padding: 0 1.5rem 0 1.5rem;
   background: transparent;
 }
 
@@ -144,14 +141,32 @@ nav li a:hover {
   color: var(--blue);
 }
 
+header {
+  width: 100vw;
+  height: 40rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  /*
+  background: no-repeat center 20% url("../images/christopher-burns-200321-unsplash.jpg");
+  filter: contrast(1.2);
+  background-size: cover;
+  */
+  display: none;
+}
+
 main {
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
   display: grid;
   /* rows | cols */
-  grid-template: repeat(12, 1fr) / repeat(12, 1fr);
-  grid-gap: 0;
+  grid-template: repeat(20, 1fr) / repeat(40, 1fr);
+  grid-gap: calc(var(--space)*0.5);
   border: 1px solid transparent;
 }
 
@@ -161,7 +176,25 @@ footer {
   margin: 0 auto;
   bottom: 0;
   position: relative;
-  border: 1px solid cyan;
+  border: 1px solid magenta;
+}
+
+
+
+
+
+h1 {
+  font-family: var(--heading-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--bold);
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5rem;
+  color: var(--primary-text);
+  border: 1px solid transparent;
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
@@ -174,6 +207,8 @@ h2 {
   letter-spacing: 0.25rem;
   color: var(--primary-text);
   border: 1px solid transparent;
+  margin: 0;
+  padding: 0;
 }
 
 h3 {
@@ -186,65 +221,122 @@ h3 {
   letter-spacing: 0.15rem;
   color: var(--primary-text);
   border: 1px solid transparent;
+  margin: 0;
+  padding: 0;
 }
 
 
 
 
 
-.formDataContainer {
+form {
   width: 100%;
-  height: 10rem;
-  margin: calc(var(--space)*0.5)
-          0
-          calc(var(--space)*2.5)
-          0;
-  background: lightgreen;
-}
-
-.left {
-  /* row-start | col-start | row-end | col-end */
-  grid-area: 1 / 1 / span 12 / span 2;
-  padding: calc(var(--space)*2);
-  background: yellow;
-  display: none;
-}
-
-.left form {
+  padding: calc(var(--space)*0.3);
   font-family: var(--main-ff-ss-1);
-  font-size: 1.5vw;
-  font-weight: var(--regular);
+  font-size: 1vw;
+  font-weight: var(--bold);
   text-align: left;
-  text-transform: capitalize;
+  text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.25rem;
+  letter-spacing: 0.15rem;
   color: var(--primary-text);
 }
 
-.left form label {
-  border: 1px solid red;
+label {
+  width: 100%;
 }
 
-.right {
+label:after { content: ": " }
+
+input {
+  width: 100%;
+  margin-top: calc(var(--space)*0.4);
+  padding: calc(var(--space)*0.5);
+  font-size: 0.7vw;
+}
+
+.submit {
+  width: 100%;
+  margin-top: calc(var(--space)*1.5);
+  padding: calc(var(--space)*0.5);
+  border: 1px solid black;
+  background: pink;
+}
+
+
+
+
+
+.adminFormSchool {
   /* row-start | col-start | row-end | col-end */
-  grid-area: 1 / 4 / span 12 / span 9;
-  display: grid;
-  /* grid-rows | grid-cols */
-  grid-template: repeat(5, 1fr) / repeat(12, 1fr);
-  grid-gap: var(--space);
-  padding: calc(var(--space)*2);
-  background: lightblue;
-  display: none;
+  grid-area: 2 / 2 / auto / span 5;
+  padding: calc(var(--space)*1.5);
+  background: yellow;
 }
 
-.miniData {
-  grid-area: 1 / 1 / span 6 / span 2;
-  background: pink;
-  display: none;
+.adminSchools {
+  grid-area: 4 / 2 / auto / span 5;
+  padding: calc(var(--space)*1.5);
+  background: yellow;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--bold);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--primary-text);
 }
 
-.miniSports {
-  grid-area: 1 / 3 / span 6 / span 2;
+.adminSchools table,
+.adminSports table,
+.adminTeams table {
+  width: 100%;
   background: pink;
-  display: none;
+}
+
+#tBodyTeams {
+  background: green;
+  padding: 5rem;
+}
+
+
+
+
+.adminFormSport {
+  grid-area: 2 / 8 / auto / span 5;
+  padding: calc(var(--space)*1.5);
+  background: yellow;
+}
+
+.adminSports {
+  grid-area: 4 / 8 / auto / span 5;
+  padding: calc(var(--space)*1.5);
+  background: yellow;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--bold);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--primary-text);
+}
+
+
+
+
+
+.adminTeams {
+  grid-area: 2 / 17 / auto / span 15;
+  padding: calc(var(--space)*1.5);
+  background: yellow;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--bold);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--primary-text);
 }
