@@ -8,19 +8,20 @@
   <body>
 
 
-<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDAsmJ3zSoP0RdOjuRp2yPL1ysUbx-hOMo",
-    authDomain: "idrettsdag-27242.firebaseapp.com",
-    databaseURL: "https://idrettsdag-27242.firebaseio.com",
-    projectId: "idrettsdag-27242",
-    storageBucket: "idrettsdag-27242.appspot.com",
-    messagingSenderId: "387039026634"
-  };
-  firebase.initializeApp(config);
-</script>
+    <!-- connect to firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDAsmJ3zSoP0RdOjuRp2yPL1ysUbx-hOMo",
+      authDomain: "idrettsdag-27242.firebaseapp.com",
+      databaseURL: "https://idrettsdag-27242.firebaseio.com",
+      projectId: "idrettsdag-27242",
+      storageBucket: "idrettsdag-27242.appspot.com",
+      messagingSenderId: "387039026634"
+    };
+    firebase.initializeApp(config);
+    </script>
 
 
 
@@ -54,41 +55,72 @@
 
 
 
-  <div class="left">
+  <div class="adminFormSchool">
     <h3>registrer skole</h3>
-    <div class="formDataContainer">
-
-    </div>
-
-    <h3>registrer idrett</h3>
-    <div class="formDataContainer">
-
-    </div>
-
-    <h3>registrer resultat</h3>
-    <div class="formDataContainer">
-
-    </div>
+    <!-- register a school -->
+    <form id="formSchool">
+      <label for="schoolName">school name</label>
+      <input type="text" name="schoolName" id="inpSchool">
+      <button class="submit">OK</button>
+    </form>
   </div>
 
 
-  <div class="right">
-    <div class="miniData">
-      <h3>skoler</h3>
-      <div class="formDataContainer">
+  <div class="adminSchools">
+    <h3>skoler</h3>
+    <!-- show schools -->
+    <table>
+      <thead>
+        <tr>
+          <td>schools</td>
+        </tr>
+      </thead>
+      <tbody id="tBodySchools">
+      </tbody>
+    </table>
+  </div>
 
-      </div>
 
-      <h3>idretter</h3>
-      <div class="formDataContainer">
+  <div class="adminFormSport">
+    <h3>registrer idrett</h3>
+    <!-- register a sport -->
+    <form id="formSport">
+      <label for="sportName">sport name</label>
+      <input type="text" name="sportName" id="inpSport">
+      <button class="submit">OK</button>
+    </form>
+  </div>
 
-      </div>
-    </div>
+  <div class="adminSports">
+    <h3>idretter</h3>
+    <!-- show sports -->
+    <table>
+      <thead>
+        <tr>
+          <td>sports</td>
+        </tr>
+      </thead>
+      <tbody id="tBodySports">
+      </tbody>
+    </table>
+  </div>
 
-    <div class="miniSports">
 
-    </div>
-
+  <div class="adminTeams">
+    <h3>registrerte lag</h3>
+    <!-- show teams -->
+    <table>
+      <thead>
+        <tr>
+          <td>team name</td>
+          <td>school</td>
+          <td>class</td>
+          <td>sport</td>
+        </tr>
+      </thead>
+      <tbody id="tBodyTeams">
+      </tbody>
+    </table>
   </div>
 
 
@@ -106,7 +138,7 @@
 
 
     <!-- own external js -->
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 
   </body>
 </html>
