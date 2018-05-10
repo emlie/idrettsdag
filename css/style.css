@@ -124,6 +124,7 @@ nav ul li {
 nav ul li:first-child {
   flex: 1 0 auto;
   background: transparent;
+  font-weight: var(--bold);
 }
 
 nav ul li:nth-child(2) {
