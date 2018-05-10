@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <title>Admin – Idrettsdag</title>
     <link rel="stylesheet" href="../css/style.css">
+
+    <script>
+    FontAwesomeConfig = { searchPseudoElements: true };
+  </script>
+  <script defer src="/static/fontawesome/fontawesome-all.js"></script>
+  
   </head>
   <body>
 
@@ -43,6 +49,11 @@
     </li>
   </ul>
 </nav>
+
+
+<header id="up">
+
+</header>
 
 
 
@@ -114,10 +125,14 @@
       </div>
       <!-- register a result -->
       <form id="formResult">
-        <label for="selTeam">select team</label><br>
-        <select class="" name="selTeam" id="selTeam" required>
-          <option>--- select team ---</option>
-        </select><br>
+        <label for="selTeam">select team</label>
+        <br>
+        <div class="selectdiv">
+          <select class="" name="selTeam" id="selTeam" required>
+            <option>--- select team ---</option>
+          </select>
+        </div>
+        <br>
         <label for="aResult">points</label><br>
         <input type="number" name="aResult" id="inpPoints" required>
         <button class="submit">OK</button>
@@ -177,9 +192,12 @@
 
 
 <footer>
-  <div class="footer">
-    some text here
-  </div>
+  <p>
+    <a href="#up"><img src="../icons/up-arrow.svg" alt="up"></a>
+  </p>
+  <p>
+    Created by Mia Elisenberg for IT1 Innlevering – Idrettsdag 2018
+  </p>
 </footer>
 
 
@@ -190,7 +208,11 @@
     <script src="../scripts/scripts.js"></script>
 
     <!-- smooth scroll js module: https://github.com/zengabor/zenscroll -->
-    <script src="scripts/zenscroll-latest/zenscroll-min.js"></script>
+    <script src="../scripts/zenscroll-latest/zenscroll-min.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
 
   </body>
 </html>

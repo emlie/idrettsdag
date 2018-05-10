@@ -144,7 +144,7 @@ nav li a:hover {
 
 header {
   width: 100vw;
-  height: 40rem;
+  height: 4rem;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -157,7 +157,8 @@ header {
   filter: contrast(1.2);
   background-size: cover;
   */
-  display: none;
+  position: absolute;
+  top: 0;
 }
 
 main {
@@ -173,24 +174,35 @@ main {
 
 footer {
   width: 100vw;
-  height: 20rem;
-  margin-top: calc(var(--space)*3);
-  bottom: 0;
-  position: relative;
-  border: 1px solid transparentzxzx;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  font-family: var(--main-ff-ss-1);
-  font-size: 0.8vw;
-  font-weight: var(--regular);
-  text-align: left;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 0.15rem;
-  color: var(--primary-text);
+ padding: calc(var(--space)*6);
+ margin-top: 30rem;
+ background: var(--gray);
+}
+
+footer p {
+ padding: calc(var(--space)*0);
+ font-family: var(--main-ff-ss-1);
+ font-size: 0.7vw;
+ font-weight: normal;
+ text-align: center;
+ text-transform: none;
+ text-decoration: none;
+ letter-spacing: 0.07rem;
+ color: var(--gray-darker);
+}
+
+footer p a {
+  font-size: inherit;
+}
+
+footer img {
+  width: 2.5rem;
+  margin-bottom: calc(var(--space)*2);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 
@@ -205,7 +217,7 @@ h1 {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.5rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
   border: 1px solid transparent;
   margin: 0;
   padding: 0;
@@ -219,7 +231,7 @@ h2 {
   text-transform: capitalize;
   text-decoration: none;
   letter-spacing: 0.25rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
   border: 1px solid transparent;
   margin: 0;
   padding: 0;
@@ -233,7 +245,7 @@ h3 {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
   border: 1px solid transparent;
   margin: 0;
   padding: 0;
@@ -253,7 +265,7 @@ form {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
 }
 
 label {
@@ -313,6 +325,37 @@ select {
            calc(var(--space)*0.5)
            calc(var(--space)*1)
            calc(var(--space)*0.5);
+  background: white;
+}
+
+.selectdiv {
+  position: relative;
+  font-size: inherit;
+}
+
+.selectdiv::after {
+  font-family: "Font Awesome 5 Solid";
+  content: "\f107";
+  font-weight: 900;
+  color: var(--green);
+  right: 1.1rem;
+  top: 0.8rem;
+  height: 3.4rem;
+  padding: 1.5rem 0 0 0.8rem;
+  position: absolute;
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+/* IE11 hide native arrow button */
+select::-ms-expand {
+display: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 :required {
@@ -384,6 +427,14 @@ select {
   margin-top: calc(var(--space)*8);
   background: transparent;
   border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
 }
 
 .adminFormSport {
@@ -391,12 +442,28 @@ select {
   margin-top: calc(var(--space)*8);
   background: transparent;
   border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
 }
 
 .adminFormResult {
   grid-area: 2 / 2 / auto / span 11;
   margin-top: calc(var(--space)*3);
   background: transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
 }
 
 .adminTeams {
@@ -411,7 +478,7 @@ select {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
 }
 
 .adminResults {
@@ -426,7 +493,7 @@ select {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
 }
 
 .showData {
@@ -438,5 +505,5 @@ select {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0.15rem;
-  color: var(--primary-text);
+  color: var(--almost-black);
 }
