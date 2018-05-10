@@ -139,7 +139,7 @@ nav ul li a {
 }
 
 nav li a:hover {
-  color: var(--blue);
+  color: var(--green);
 }
 
 header {
