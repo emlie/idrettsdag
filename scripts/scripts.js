@@ -14,6 +14,8 @@ var selTeam = document.getElementById("selTeam");
 var inpPoints = document.getElementById("inpPoints");
 var tBodyResults = document.getElementById("tBodyResults");
 
+var selResultTeam = document.getElementById("selResultTeam");
+
 
 /* –––––––––––––––––––––––––– GET DATABASES –––––––––––––––––––––––––– */
 var database = firebase.database();
@@ -166,6 +168,13 @@ function getTeams(snapshot){
       </option>
       `;
 
+      // show teams in selResultTeam
+      selResultTeam.innerHTML += `
+      <option value="${regdTeam}">
+        ${theRegdTeam.name}
+      </option>
+      `;
+
     });
 
   });
@@ -221,6 +230,37 @@ function getResults(snapshot){
 
 };
 
+
+
+
+
+
+
+
+
+
+/* –––––––––––––––––––––––––– SORT DATA –––––––––––––––––––––––––– */
+// sort results by team
+function sortResultByTeam(){
+
+  console.log("testing sortResultByTeam");
+
+  var theSelResultTeam = selResultTeam.value;
+
+  // show the results of the selected team
+  tBodyResults.innerHTML = "";
+
+  resultsDB.orderByChild("team")
+           .equalTo(theSelResultTeam)
+           .on("child_added", getResults);
+
+  // if no team is selected, show all results from all teams
+  if (theSelResultTeam == "allResults") {
+    tBodyResults.innerHTML = "";
+    resultsDB.on("child_added", getResults);
+  };
+
+};
 
 
 
