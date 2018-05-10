@@ -36,13 +36,10 @@
       <!--empty filler-->
     </li>
     <li>
-      <a href="#">hjem</a>
-    </li>
-    <li>
-      <a href="#">elever</a>
-    </li>
-    <li>
       <a href="#">admin</a>
+    </li>
+    <li>
+      <a href="#">resultater</a>
     </li>
   </ul>
 </nav>
@@ -56,71 +53,120 @@
 
 
   <div class="adminFormSchool">
-    <h3>registrer skole</h3>
-    <!-- register a school -->
-    <form id="formSchool">
-      <label for="schoolName">school name</label>
-      <input type="text" name="schoolName" id="inpSchool">
-      <button class="submit">OK</button>
-    </form>
-  </div>
-
-
-  <div class="adminSchools">
-    <h3>skoler</h3>
-    <!-- show schools -->
-    <table>
-      <thead>
-        <tr>
-          <td>schools</td>
-        </tr>
-      </thead>
-      <tbody id="tBodySchools">
-      </tbody>
-    </table>
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>registrer skole</h3>
+      </div>
+      <!-- register a school -->
+      <form id="formSchool">
+        <input type="text" name="schoolName" id="inpSchool" required>
+        <button class="submit">OK</button>
+      </form>
+      <div class="showData">
+        <!-- show schools -->
+        <table>
+          <thead>
+            <tr>
+              <td>schools</td>
+            </tr>
+          </thead>
+          <tbody id="tBodySchools">
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 
   <div class="adminFormSport">
-    <h3>registrer idrett</h3>
-    <!-- register a sport -->
-    <form id="formSport">
-      <label for="sportName">sport name</label>
-      <input type="text" name="sportName" id="inpSport">
-      <button class="submit">OK</button>
-    </form>
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>registrer idrett</h3>
+      </div>
+      <!-- register a sport -->
+      <form id="formSport">
+        <input type="text" name="sportName" id="inpSport" required>
+        <button class="submit">OK</button>
+      </form>
+      <div class="showData">
+        <!-- show sports -->
+        <table>
+          <thead>
+            <tr>
+              <td>sports</td>
+            </tr>
+          </thead>
+          <tbody id="tBodySports">
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
-  <div class="adminSports">
-    <h3>idretter</h3>
-    <!-- show sports -->
-    <table>
-      <thead>
-        <tr>
-          <td>sports</td>
-        </tr>
-      </thead>
-      <tbody id="tBodySports">
-      </tbody>
-    </table>
+
+  <div class="adminFormResult">
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>registrer resultat</h3>
+      </div>
+      <!-- register a result -->
+      <form id="formResult">
+        <label for="selTeam">select team</label><br>
+        <select class="" name="selTeam" id="selTeam" required>
+          <option>--- select team ---</option>
+        </select><br>
+        <label for="aResult">points</label><br>
+        <input type="number" name="aResult" id="inpPoints" required>
+        <button class="submit">OK</button>
+      </form>
+    </div>
   </div>
 
 
   <div class="adminTeams">
-    <h3>registrerte lag</h3>
-    <!-- show teams -->
-    <table>
-      <thead>
-        <tr>
-          <td>team name</td>
-          <td>school</td>
-          <td>class</td>
-          <td>sport</td>
-        </tr>
-      </thead>
-      <tbody id="tBodyTeams">
-      </tbody>
-    </table>
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>registrerte lag</h3>
+      </div>
+      <!-- show teams -->
+      <table>
+        <thead>
+          <tr>
+            <td>team name</td>
+            <td>school</td>
+            <td>class</td>
+            <td>sport</td>
+          </tr>
+        </thead>
+        <tbody id="tBodyTeams">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="adminResults">
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>siste resultater</h3>
+      </div>
+      <!-- show results -->
+      <table>
+        <thead>
+          <tr>
+            <td>team name</td>
+            <td>points</td>
+          </tr>
+        </thead>
+        <tbody id="tBodyResults">
+        </tbody>
+      </table>
+    </div>
   </div>
 
 
@@ -131,6 +177,9 @@
 
 
 <footer>
+  <div class="footer">
+    some text here
+  </div>
 </footer>
 
 

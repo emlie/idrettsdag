@@ -61,6 +61,7 @@
 
   /* box-shadows */
   --smooth-light-shadow: 0 2px 4px var(--almost-white), 0 2px 4px rgba(0,0,0,0.24);
+  --smooth-lighter-shadow: 0 2px 4px var(--almost-white), 0 2px 4px rgba(0,0,0,0.15);
   --smooth-dark-shadow: 0 1.5rem 2rem rgba(0,0,0,0.3), 0 0 2rem rgba(0,0,0,0.1);
   --smooth-big-dark-shadow: 0 4px 100px var(--almost-white), 0 4px 100px rgba(0,0,0,0.5);
 }
@@ -165,7 +166,7 @@ main {
   margin: 0 auto;
   display: grid;
   /* rows | cols */
-  grid-template: repeat(20, 1fr) / repeat(40, 1fr);
+  grid-template: repeat(2, 1fr) / repeat(40, 1fr);
   grid-gap: calc(var(--space)*0.5);
   border: 1px solid transparent;
 }
@@ -173,10 +174,23 @@ main {
 footer {
   width: 100vw;
   height: 20rem;
-  margin: 0 auto;
+  margin-top: calc(var(--space)*3);
   bottom: 0;
   position: relative;
-  border: 1px solid magenta;
+  border: 1px solid transparentzxzx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  font-family: var(--main-ff-ss-1);
+  font-size: 0.8vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--primary-text);
 }
 
 
@@ -213,7 +227,7 @@ h2 {
 
 h3 {
   font-family: var(--heading-ff-ss-1);
-  font-size: 0.8vw;
+  font-size: 0.7vw;
   font-weight: var(--bold);
   text-align: left;
   text-transform: uppercase;
@@ -250,17 +264,114 @@ label:after { content: ": " }
 
 input {
   width: 100%;
-  margin-top: calc(var(--space)*0.4);
+  margin: calc(var(--space)*0.5)
+          0
+          calc(var(--space)*1.5)
+          0;
   padding: calc(var(--space)*0.5);
   font-size: 0.7vw;
 }
 
+table {
+  width: 100%;
+  margin-top: var(--space);
+  background: transparent;
+  border: 0 solid transparent;
+  font-size: inherit;
+}
+
+tbody {
+  background: transparent;
+}
+
+thead {
+  background-color: var(--gray-lighter);
+  font-weight: var(--bold);
+}
+
+td {
+  padding: calc(var(--space)*0.5);
+  border-bottom: 0.1rem solid var(--gray);
+  text-transform: none;
+}
+
+td::first-letter {
+  text-transform: uppercase;
+}
+
+.tdUppercase {
+  text-transform: uppercase;
+}
+
+select {
+  width: 100%;
+  margin: calc(var(--space)*1.5)
+          0
+          calc(var(--space)*2.5)
+          0;
+  padding: calc(var(--space)*1)
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
+}
+
+:required {
+  border: 0 solid transparent;
+  box-shadow: none;
+}
+
+
+
+
+
+
 .submit {
   width: 100%;
-  margin-top: calc(var(--space)*1.5);
-  padding: calc(var(--space)*0.5);
-  border: 1px solid black;
-  background: pink;
+  margin: calc(var(--space)*0)
+          0
+          calc(var(--space)*0)
+          0;
+  padding: calc(var(--space)*1)
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
+  border: 0 solid transparent;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  border-radius: calc(var(--space)*0.5);
+  transition: var(--smooth);
+}
+
+.submit:hover {
+  box-shadow: var(--smooth-lighter-shadow);
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: calc(var(--space)*2);
+  background: var(--almost-white);
+  box-shadow: var(--smooth-lighter-shadow);
+  border-radius: calc(var(--space)*0.5);
+  font-size: inherit;
+}
+
+.contain-h3 {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.circle {
+  width: var(--space);
+  height: var(--space);
+  border-radius: 100%;
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  margin-right: var(--space);
 }
 
 
@@ -269,53 +380,33 @@ input {
 
 .adminFormSchool {
   /* row-start | col-start | row-end | col-end */
-  grid-area: 2 / 2 / auto / span 5;
-  padding: calc(var(--space)*1.5);
-  background: yellow;
+  grid-area: 1 / 2 / auto / span 5;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
 }
-
-.adminSchools {
-  grid-area: 4 / 2 / auto / span 5;
-  padding: calc(var(--space)*1.5);
-  background: yellow;
-  font-family: var(--main-ff-ss-1);
-  font-size: 3vw;
-  font-weight: var(--bold);
-  text-align: left;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 0.15rem;
-  color: var(--primary-text);
-}
-
-.adminSchools table,
-.adminSports table,
-.adminTeams table {
-  width: 100%;
-  background: pink;
-}
-
-#tBodyTeams {
-  background: green;
-  padding: 5rem;
-}
-
-
-
 
 .adminFormSport {
-  grid-area: 2 / 8 / auto / span 5;
-  padding: calc(var(--space)*1.5);
-  background: yellow;
+  grid-area: 1 / 8 / auto / span 5;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
 }
 
-.adminSports {
-  grid-area: 4 / 8 / auto / span 5;
-  padding: calc(var(--space)*1.5);
-  background: yellow;
+.adminFormResult {
+  grid-area: 2 / 2 / auto / span 11;
+  margin-top: calc(var(--space)*3);
+  background: transparent;
+}
+
+.adminTeams {
+  grid-area: 1 / 17 / auto / span 23;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
   font-family: var(--main-ff-ss-1);
   font-size: 3vw;
-  font-weight: var(--bold);
+  font-weight: var(--regular);
   text-align: left;
   text-transform: uppercase;
   text-decoration: none;
@@ -323,17 +414,26 @@ input {
   color: var(--primary-text);
 }
 
-
-
-
-
-.adminTeams {
-  grid-area: 2 / 17 / auto / span 15;
-  padding: calc(var(--space)*1.5);
-  background: yellow;
+.adminResults {
+  grid-area: 2 / 17 / auto / span 23;
+  margin-top: calc(var(--space)*3);
+  background: transparent;
+  border: 1px solid transparent;
   font-family: var(--main-ff-ss-1);
   font-size: 3vw;
-  font-weight: var(--bold);
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--primary-text);
+}
+
+.showData {
+  width: 100%;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
   text-align: left;
   text-transform: uppercase;
   text-decoration: none;
