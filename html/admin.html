@@ -173,6 +173,14 @@
         <div class="circle"></div>
         <h3>latest results</h3>
       </div>
+      <div class="minustop">
+        <label class="label" for="selTeam">sort by team</label>
+      </div>
+      <div class="selectdiv2">
+        <select id="selResultTeam" onchange="sortResultByTeam()" name="selTeam">
+          <option value="allResults">--- sort by team ---</option>
+        </select>
+      </div>
       <!-- show results -->
       <table>
         <thead>
