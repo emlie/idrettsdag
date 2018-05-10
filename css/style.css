@@ -271,9 +271,19 @@ form {
 
 label {
   width: 100%;
+  margin: 0;
 }
 
 label:after { content: ": " }
+
+.label {
+  font-size: 0.65vw;
+  font-weight: var(--bold);
+}
+
+.minustop {
+  margin-top: -1rem;
+}
 
 input {
   width: 100%;
@@ -318,9 +328,9 @@ td::first-letter {
 
 select {
   width: 100%;
-  margin: calc(var(--space)*1.5)
+  margin: calc(var(--space)*0.5)
           0
-          calc(var(--space)*2.5)
+          calc(var(--space)*0)
           0;
   padding: calc(var(--space)*1)
            calc(var(--space)*0.5)
@@ -330,7 +340,22 @@ select {
 }
 
 .selectdiv {
+  margin: calc(var(--space)*0)
+          0
+          calc(var(--space)*1)
+          0;
   position: relative;
+  border: 1px solid transparent;
+  font-size: inherit;
+}
+
+.selectdiv2 {
+  margin: -1rem
+          0
+          calc(var(--space)*1)
+          0;
+  position: relative;
+  border: 1px solid transparent;
   font-size: inherit;
 }
 
@@ -402,6 +427,7 @@ display: none;
 
 .contain-h3 {
   width: 100%;
+  margin: 0;
   display: flex;
   flex-flow: row;
   align-items: flex-start;
@@ -507,4 +533,18 @@ display: none;
   text-decoration: none;
   letter-spacing: 0.15rem;
   color: var(--almost-black);
+}
+
+
+
+
+
+#selTeamResult {
+  padding: calc(var(--space)*1)
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
+  background: white;
+  border: 1px solid transparent;
+  font-size: 0.6vw;
 }
