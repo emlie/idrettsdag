@@ -14,6 +14,9 @@ var selTeam = document.getElementById("selTeam");
 var inpPoints = document.getElementById("inpPoints");
 var tBodyResults = document.getElementById("tBodyResults");
 
+var selTeamTeam = document.getElementById("selTeamTeam");
+var selTeamSchool = document.getElementById("selTeamSchool");
+var selTeamSport = document.getElementById("selTeamSport");
 var selResultTeam = document.getElementById("selResultTeam");
 
 
@@ -71,6 +74,13 @@ function getSchools(snapshot){
   </tr>
   `;
 
+  // show schools in selTeamSchool
+  selTeamSchool.innerHTML += `
+  <option value="${regdSchool}">
+    ${theRegdSchool.name}
+  </option>
+  `;
+
 };
 
 
@@ -111,6 +121,13 @@ function getSports(snapshot){
   </tr>
   `;
 
+  // show sports in selTeamSchool
+  selTeamSport.innerHTML += `
+  <option value="${regdSport}">
+    ${theRegdSport.name}
+  </option>
+  `;
+
 };
 
 
@@ -132,6 +149,7 @@ function getTeams(snapshot){
 
     console.log("testing schoolsRef");
 
+    var regdTeamSchool = snapshot.key;
     var theSchool = snapshotSchools.val();
 
     // nest a third function to get data from sportsDB and use as foreign key
@@ -141,6 +159,7 @@ function getTeams(snapshot){
 
       console.log("testing sportsRef");
 
+      var regdTeamSport = snapshot.key;
       var theSport = snapshotSports.val();
 
       // show teams in table
@@ -258,6 +277,53 @@ function sortResultByTeam(){
   if (theSelResultTeam == "allResults") {
     tBodyResults.innerHTML = "";
     resultsDB.on("child_added", getResults);
+  };
+
+};
+
+
+// use the same method for teams, as for results
+// sort teams by team
+function sortTeamsByTeam(){
+
+  console.log("testing sortTeamsByTeam");
+
+  var theSelTeamTeam = selTeamTeam.value;
+
+  // show the teams of the selected team
+  tBodyTeams.innerHTML = "";
+
+  teamsDB.orderByChild("team")
+         .equalTo(theSelTeamTeam)
+         .on("child_added", getTeams);
+
+  // if no team is selected, show all results from all teams
+  if (theSelTeamTeam == "allTeams") {
+    tBodyTeams.innerHTML = "";
+    teamsDB.on("child_added", getTeams);
+  };
+
+};
+
+
+// sort teams by school
+function sortTeamsBySchool(){
+
+  console.log("testing sortTeamsBySchool");
+
+  var theSelTeamSchool = selTeamSchool.value;
+
+  // show the results of the selected team
+  tBodyTeams.innerHTML = "";
+
+  teamsDB.orderByChild("school")
+         .equalTo(theSelTeamSchool)
+         .on("child_added", getTeams);
+
+  // if no team is selected, show all results from all teams
+  if (theSelTeamSchool == "allSchools") {
+    tBodyTeams.innerHTML = "";
+    resultsDB.on("child_added", getTeams);
   };
 
 };

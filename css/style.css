@@ -433,6 +433,7 @@ display: none;
   align-items: flex-start;
   align-content: flex-start;
   justify-content: flex-start;
+  border: 1px solid transparent;
 }
 
 .circle {
@@ -442,6 +443,27 @@ display: none;
   background-color: #85FFBD;
   background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
   margin-right: var(--space);
+}
+
+.sort {
+  width: auto;
+  height: auto;
+  margin: calc(var(--space)*0)
+          calc(var(--space)*2)
+          calc(var(--space)*0)
+          0;
+  background: transparent;
+}
+
+.sort label {
+  font-size: 0.6vw;
+  font-weight: var(--bold);
+}
+
+.sort select {
+  border: 0 solid transparent;
+  background: white;
+  font-size: 0.6vw;
 }
 
 

@@ -150,6 +150,26 @@
         <div class="circle"></div>
         <h3>registered teams</h3>
       </div>
+      <div class="contain-h3">
+        <div class="sort">
+          <label for="sortTeamTeam">sort by team</label>
+          <select id="selTeamTeam" onchange="sortTeamsByTeam()" name="sortTeamTeam">
+            <option value="allTeams">--- sort by team ---</option>
+          </select>
+        </div>
+        <div class="sort">
+          <label for="sortTeamSchool">sort by school</label>
+          <select id="selTeamSchool" onchange="sortTeamsBySchool()" name="sortTeamTeam">
+            <option value="allSchools">--- sort by school ---</option>
+          </select>
+        </div>
+        <div class="sort">
+          <label for="sortTeamSport">sort by sport</label>
+          <select id="selTeamSport" onchange="sortTeamsBySport()" name="sortTeamTeam">
+            <option value="allSports">--- sort by sport ---</option>
+          </select>
+        </div>
+      </div>
       <!-- show teams -->
       <table>
         <thead>
@@ -173,13 +193,13 @@
         <div class="circle"></div>
         <h3>latest results</h3>
       </div>
-      <div class="minustop">
-        <label class="label" for="selTeam">sort by team</label>
-      </div>
-      <div class="selectdiv2">
-        <select id="selResultTeam" onchange="sortResultByTeam()" name="selTeam">
-          <option value="allResults">--- sort by team ---</option>
-        </select>
+      <div class="contain-h3">
+        <div class="sort">
+          <label class="label" for="selTeam">sort by team</label>
+          <select id="selResultTeam" onchange="sortResultByTeam()" name="selTeam">
+            <option value="allResults">--- sort by team ---</option>
+          </select>
+        </div>
       </div>
       <!-- show results -->
       <table>
