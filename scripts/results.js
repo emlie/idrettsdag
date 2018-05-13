@@ -7,6 +7,7 @@ var tBodyResults = document.getElementById("tBodyResults");
 
 /* –––––––––––––––––––––––––– GET DATABASES –––––––––––––––––––––––––– */
 var database = firebase.database();
+var teamsDB = database.ref("teams");
 var resultsDB = database.ref("results");
 
 
@@ -18,6 +19,27 @@ var resultsDB = database.ref("results");
 
 
 /* –––––––––––––––––––––––––– PUSH AND GET DATA –––––––––––––––––––––––––– */
+// show teams
+function getTeams(snapshot){
+
+  console.log("testing getTeams");
+
+  var regdTeam = snapshot.key;
+  var theRegdTeam = snapshot.val();
+
+  // show teams in selResultTeam
+  selResultTeam.innerHTML += `
+  <option value="${regdTeam}">
+    ${theRegdTeam.name}
+  </option>
+  `;
+
+};
+
+
+
+
+
 // use the same method for results, as with schools
 // add new sport to resultsDB
 function addResult(event){
@@ -106,4 +128,5 @@ function sortResultByTeam(){
 
 /* –––––––––––––––––––––––––– REGISTER FUNCTIONS –––––––––––––––––––––––––– */
 // when database changes (when new data is added), run function
+teamsDB.on("child_added", getTeams);
 resultsDB.on("child_added", getResults);
