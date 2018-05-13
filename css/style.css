@@ -678,6 +678,7 @@ select {
 
 .sideIcon {
   grid-area: 1 / 25 / auto / span 2;
+  padding-top: calc(var(--space)*4);
   background: transparent;
   display: flex;
   align-items: center;
