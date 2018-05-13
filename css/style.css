@@ -66,6 +66,26 @@
   --smooth-big-dark-shadow: 0 4px 100px var(--almost-white), 0 4px 100px rgba(0,0,0,0.5);
 }
 
+
+
+
+
+@keyframes updown {
+  0% {
+    transform: translateY(0); /* no position change */
+  }
+  50% {
+    transform: translateY(-2.5rem); /* change position upwards */
+  }
+  100% {
+    transform: translateY(0); /* change position back to start */
+  }
+}
+
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -650,4 +670,25 @@ select {
   background: white;
   border: 1px solid transparent;
   font-size: 0.6vw;
+}
+
+
+
+
+
+.sideIcon {
+  grid-area: 1 / 25 / auto / span 2;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.sideIcon img {
+  width: 100%;
+
+  /* name | duration | iteration | timing-function */
+  animation: updown 5s infinite ease-in-out;
 }
