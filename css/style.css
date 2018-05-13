@@ -389,6 +389,10 @@ display: none;
   box-shadow: none;
 }
 
+option::first-letter {
+  text-transform: uppercase;
+}
+
 
 
 
@@ -436,6 +440,10 @@ display: none;
   border: 1px solid transparent;
 }
 
+.space-top {
+  margin-top: calc(var(--space)*4);
+}
+
 .circle {
   width: var(--space);
   height: var(--space);
@@ -460,7 +468,9 @@ display: none;
   font-weight: var(--bold);
 }
 
-.sort select {
+.sort select,
+.container select {
+  margin-bottom: var(--space);
   border: 0 solid transparent;
   background: white;
   font-size: 0.6vw;

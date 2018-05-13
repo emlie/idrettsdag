@@ -2,10 +2,14 @@
 var formSchool = document.getElementById("formSchool");
 var inpSchool = document.getElementById("inpSchool");
 var tBodySchools = document.getElementById("tBodySchools");
+var formDelSchool = document.getElementById("formDelSchool");
+var selDeleteSchool = document.getElementById("selDeleteSchool");
 
 var formSport = document.getElementById("formSport");
 var inpSport = document.getElementById("inpSport");
 var tBodySports = document.getElementById("tBodySports");
+var formDeleteSport = document.getElementById("formDeleteSport");
+var selDeleteSport = document.getElementById("selDeleteSport");
 
 var tBodyTeams = document.getElementById("tBodyTeams");
 
@@ -74,12 +78,40 @@ function getSchools(snapshot){
   </tr>
   `;
 
+  // show schools in selDeleteSchool
+  selDeleteSchool.innerHTML += `
+  <option value="${regdSchool}">
+    ${theRegdSchool.name}
+  </option>
+  `;
+
   // show schools in selTeamSchool
   selTeamSchool.innerHTML += `
   <option value="${regdSchool}">
     ${theRegdSchool.name}
   </option>
   `;
+
+};
+
+
+// delete school
+function deleteSchool(event){
+
+  console.log("testing deleteSchool");
+
+  event.preventDefault();
+
+  // the value of the option == databse object's key
+  var deletedSchool = selDeleteSchool.value;
+
+  // create path for the object to be deleted
+  var deletedSchoolRef = database.ref("schools/" + deletedSchool);
+
+  deletedSchoolRef.remove();
+
+  // Reload the current page, without using the cache
+  window.location.reload(true);
 
 };
 
@@ -113,6 +145,7 @@ function getSports(snapshot){
   var regdSport = snapshot.key;
   var theRegdSport = snapshot.val();
 
+  // show data in table
   tBodySports.innerHTML += `
   <tr>
     <td>
@@ -121,12 +154,40 @@ function getSports(snapshot){
   </tr>
   `;
 
-  // show sports in selTeamSchool
+  // show sports in selDeleteSport
+  selDeleteSport.innerHTML += `
+  <option value="${regdSport}">
+    ${theRegdSport.name}
+  </option>
+  `;
+
+  // show sports in selTeamSport
   selTeamSport.innerHTML += `
   <option value="${regdSport}">
     ${theRegdSport.name}
   </option>
   `;
+
+};
+
+
+// delete sport
+function deleteSport(event){
+
+  console.log("testing deleteSport");
+
+  event.preventDefault();
+
+  // the value of the option == databse object's key
+  var deletedSport = selDeleteSport.value;
+
+  // create path for the object to be deleted
+  var deletedSportRef = database.ref("sports/" + deletedSport);
+
+  deletedSportRef.remove();
+
+  // Reload the current page, without using the cache
+  window.location.reload(true);
 
 };
 
@@ -340,7 +401,9 @@ function sortTeamsBySchool(){
 /* –––––––––––––––––––––––––– REGISTER FUNCTIONS –––––––––––––––––––––––––– */
 // when form is submitted, run function
 formSchool.onsubmit = addSchool;
+formDelSchool.onsubmit = deleteSchool;
 formSport.onsubmit = addSport;
+formDeleteSport.onsubmit = deleteSport;
 formResult.onsubmit = addResult;
 
 
