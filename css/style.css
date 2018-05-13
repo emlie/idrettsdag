@@ -541,6 +541,21 @@ select {
   color: var(--almost-black);
 }
 
+.adminResults-center {
+  grid-area: 1 / 14 / auto / span 14;
+  margin-top: calc(var(--space)*3);
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
+}
+
 .showData {
   width: 100%;
   font-family: var(--main-ff-ss-1);
@@ -552,7 +567,6 @@ select {
   letter-spacing: 0.15rem;
   color: var(--almost-black);
 }
-
 
 
 
