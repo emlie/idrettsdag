@@ -12,6 +12,8 @@ var formDeleteSport = document.getElementById("formDeleteSport");
 var selDeleteSport = document.getElementById("selDeleteSport");
 
 var tBodyTeams = document.getElementById("tBodyTeams");
+var formDeleteTeam = document.getElementById("formDeleteTeam");
+var selDeleteTeam = document.getElementById("selDeleteTeam");
 
 var formResult = document.getElementById("formResult");
 var selTeam = document.getElementById("selTeam");
@@ -178,15 +180,12 @@ function deleteSport(event){
 
   event.preventDefault();
 
-  // the value of the option == databse object's key
   var deletedSport = selDeleteSport.value;
 
-  // create path for the object to be deleted
   var deletedSportRef = database.ref("sports/" + deletedSport);
 
   deletedSportRef.remove();
 
-  // Reload the current page, without using the cache
   window.location.reload(true);
 
 };
@@ -255,9 +254,34 @@ function getTeams(snapshot){
       </option>
       `;
 
+      // show teams in selDeleteTeam
+      selDeleteTeam.innerHTML += `
+      <option value="${regdTeam}">
+        ${theRegdTeam.name}
+      </option>
+      `;
+
     });
 
   });
+
+};
+
+
+// delete team
+function deleteTeam(event){
+
+  console.log("testing deleteTeam");
+
+  event.preventDefault();
+
+  var deletedTeam = selDeleteTeam.value;
+
+  var deletedTeamRef = database.ref("teams/" + deletedTeam);
+
+  deletedTeamRef.remove();
+
+  window.location.reload(true);
 
 };
 
@@ -404,6 +428,7 @@ formSchool.onsubmit = addSchool;
 formDelSchool.onsubmit = deleteSchool;
 formSport.onsubmit = addSport;
 formDeleteSport.onsubmit = deleteSport;
+formDeleteTeam.onsubmit = deleteTeam;
 formResult.onsubmit = addResult;
 
 
