@@ -552,8 +552,38 @@ select {
   color: var(--almost-black);
 }
 
+.adminTeams-teams {
+  grid-area: 1 / 18 / span 2 / span 14;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
+}
+
 .adminFormTeams {
   grid-area: 1 / 35 / auto / span 5;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
+}
+
+.formTeam-teams {
+  grid-area: 1 / 10 / span 2 / span 5;
   margin-top: calc(var(--space)*8);
   background: transparent;
   border: 1px solid transparent;

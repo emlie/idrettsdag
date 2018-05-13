@@ -47,10 +47,61 @@
 <header id="up">
 </header>
 
+<div class="header">
+
+</div>
+
 
 
 
 <main>
+
+  <div class="formTeam-teams">
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>register team</h3>
+      </div>
+      <!-- register a sport -->
+      <form id="formTeam">
+        <label for="teamName">team name</label>
+        <input type="text" name="teamName" id="inpTeamName" required>
+        <label for="selSchool">select school</label>
+        <select class="" name="selSchool" id="selSchool">
+          <option>--- select school ---</option>
+        </select>
+        <label for="className">class name</label>
+        <input type="text" name="className" id="inpClassName" required>
+        <label for="selSport">select sport</label>
+        <select class="" name="selSport" id="selSport">
+          <option>--- select sport ---</option>
+        </select>
+        <button class="submit">OK</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="adminTeams-teams">
+    <div class="container">
+      <div class="contain-h3">
+        <div class="circle"></div>
+        <h3>registered teams</h3>
+      </div>
+      <!-- show teams -->
+      <table>
+        <thead>
+          <tr>
+            <td>team name</td>
+            <td>school</td>
+            <td>class</td>
+            <td>sport</td>
+          </tr>
+        </thead>
+        <tbody id="tBodyTeams">
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 </main>
 
@@ -70,7 +121,7 @@
 
 
     <!-- own external js -->
-    <script src="../scripts/admin.js"></script>
+    <script src="../scripts/teams.js"></script>
 
     <!-- smooth scroll js module: https://github.com/zengabor/zenscroll -->
     <script src="scripts/zenscroll-latest/zenscroll-min.js"></script>
