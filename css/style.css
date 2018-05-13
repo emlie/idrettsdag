@@ -352,45 +352,16 @@ select {
 .selectdiv2 {
   margin: -1rem
           0
-          calc(var(--space)*1)
+          calc(var(--space)*0)
           0;
   position: relative;
   border: 1px solid transparent;
   font-size: inherit;
 }
 
-.selectdiv::after {
-  font-family: "Font Awesome 5 Solid";
-  content: "\f107";
-  font-weight: 900;
-  color: var(--green);
-  right: 1.1rem;
-  top: 0.8rem;
-  height: 3.4rem;
-  padding: 1.5rem 0 0 0.8rem;
-  position: absolute;
-  pointer-events: none;
-  vertical-align: middle;
-}
-
-/* IE11 hide native arrow button */
-select::-ms-expand {
-display: none;
-}
-
-.selectdiv select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 :required {
   border: 0 solid transparent;
   box-shadow: none;
-}
-
-option::first-letter {
-  text-transform: uppercase;
 }
 
 
@@ -441,7 +412,7 @@ option::first-letter {
 }
 
 .space-top {
-  margin-top: calc(var(--space)*4);
+  margin-top: calc(var(--space)*2);
 }
 
 .circle {
@@ -526,7 +497,22 @@ option::first-letter {
 }
 
 .adminTeams {
-  grid-area: 1 / 17 / auto / span 23;
+  grid-area: 1 / 17 / auto / span 14;
+  margin-top: calc(var(--space)*8);
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: var(--main-ff-ss-1);
+  font-size: 3vw;
+  font-weight: var(--regular);
+  text-align: left;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  color: var(--almost-black);
+}
+
+.adminFormTeams {
+  grid-area: 1 / 35 / auto / span 5;
   margin-top: calc(var(--space)*8);
   background: transparent;
   border: 1px solid transparent;
@@ -541,7 +527,7 @@ option::first-letter {
 }
 
 .adminResults {
-  grid-area: 2 / 17 / auto / span 23;
+  grid-area: 2 / 17 / auto / span 14;
   margin-top: calc(var(--space)*3);
   background: transparent;
   border: 1px solid transparent;
