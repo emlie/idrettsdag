@@ -194,6 +194,45 @@ function deleteSport(event){
 
 
 
+// get teams
+function getTeamsSel(snapshot){
+
+  console.log("testing getTeamsSel");
+
+  var thisRegdTeam = snapshot.key;
+  var thatRegdTeam = snapshot.val();
+
+  // show regdTeam in selTeam
+  selTeam.innerHTML += `
+  <option value="${thisRegdTeam}">
+    ${thatRegdTeam.name}
+  </option>
+  `;
+
+  // show teams in selTeamTeam
+  selTeamTeam.innerHTML += `
+  <option value="${thisRegdTeam}">
+    ${thatRegdTeam.name}
+  </option>
+  `;
+
+  // show teams in selResultTeam
+  selResultTeam.innerHTML += `
+  <option value="${thisRegdTeam}">
+    ${thatRegdTeam.name}
+  </option>
+  `;
+
+  // show teams in selDeleteTeam
+  selDeleteTeam.innerHTML += `
+  <option value="${thisRegdTeam}">
+    ${thatRegdTeam.name}
+  </option>
+  `;
+
+};
+
+
 // show teams
 function getTeams(snapshot){
 
@@ -240,14 +279,15 @@ function getTeams(snapshot){
       </tr>
       `;
 
-      // show regdTeam in selTeam
+      /* show regdTeam in selTeam
       selTeam.innerHTML += `
       <option value="${regdTeam}">
         ${theRegdTeam.name}
       </option>
       `;
+      */
 
-      // show teams in selTeamTeam
+      /* show teams in selTeamTeam
       selTeamTeam.innerHTML += `
       <option value="${regdTeam}">
         ${theRegdTeam.name}
@@ -260,13 +300,15 @@ function getTeams(snapshot){
         ${theRegdTeam.name}
       </option>
       `;
+      */
 
-      // show teams in selDeleteTeam
+      /* show teams in selDeleteTeam
       selDeleteTeam.innerHTML += `
       <option value="${regdTeam}">
         ${theRegdTeam.name}
       </option>
       `;
+      */
 
     });
 
@@ -464,5 +506,6 @@ formResult.onsubmit = addResult;
 // when database changes (when new data is added), run function
 schoolsDB.on("child_added", getSchools);
 sportsDB.on("child_added", getSports);
+teamsDB.on("child_added", getTeamsSel);
 teamsDB.on("child_added", getTeams);
 resultsDB.on("child_added", getResults);
