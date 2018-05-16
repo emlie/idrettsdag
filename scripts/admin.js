@@ -325,6 +325,8 @@ function getResults(snapshot){
 
     var theResult = snapshotResults.val();
 
+    tBodyResults.innerHTML += "";
+
     tBodyResults.innerHTML += `
     <tr>
       <td>${theResult.name}</td>
@@ -407,7 +409,7 @@ function sortTeamsBySchool(){
          .equalTo(theSelTeamSchool)
          .on("child_added", getTeams);
 
-  // if no team is selected, show all results from all teams
+  // if no school is selected, show all results from all teams
   if (theSelTeamSchool == "allSchools") {
     tBodyTeams.innerHTML = "";
     resultsDB.on("child_added", getTeams);
