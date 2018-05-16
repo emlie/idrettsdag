@@ -233,7 +233,7 @@ function getTeamsSel(snapshot){
 };
 
 
-// show teams
+// show teams in table
 function getTeams(snapshot){
 
   console.log("testing getTeams");
@@ -278,37 +278,6 @@ function getTeams(snapshot){
         </td>
       </tr>
       `;
-
-      /* show regdTeam in selTeam
-      selTeam.innerHTML += `
-      <option value="${regdTeam}">
-        ${theRegdTeam.name}
-      </option>
-      `;
-      */
-
-      /* show teams in selTeamTeam
-      selTeamTeam.innerHTML += `
-      <option value="${regdTeam}">
-        ${theRegdTeam.name}
-      </option>
-      `;
-
-      // show teams in selResultTeam
-      selResultTeam.innerHTML += `
-      <option value="${regdTeam}">
-        ${theRegdTeam.name}
-      </option>
-      `;
-      */
-
-      /* show teams in selDeleteTeam
-      selDeleteTeam.innerHTML += `
-      <option value="${regdTeam}">
-        ${theRegdTeam.name}
-      </option>
-      `;
-      */
 
     });
 
