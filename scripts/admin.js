@@ -316,10 +316,12 @@ function getResults(snapshot){
 
   var theRegdResult = snapshot.val();
 
-  // use a second function to get data from schoolsDB and use as foreign key
-  var resultsRef = database.ref("teams/" + theRegdResult.team);
+  // use a second function to get data from steamsDB and use as foreign key
+  var teamsRef = database.ref("teams/" + theRegdResult.team);
 
-  resultsRef.on("value", function(snapshotResults){
+  teamsRef.on("value", function(snapshotResults){
+
+    console.log("testing resultsRef");
 
     var theResult = snapshotResults.val();
 
