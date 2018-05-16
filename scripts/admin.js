@@ -211,7 +211,7 @@ function getTeamsSel(snapshot){
 
   // show teams in selTeamTeam
   selTeamTeam.innerHTML += `
-  <option value="${thisRegdTeam}">
+  <option value="${thatRegdTeam.name}">
     ${thatRegdTeam.name}
   </option>
   `;
