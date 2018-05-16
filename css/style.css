@@ -70,6 +70,7 @@
 
 
 
+/* create animation */
 @keyframes updown {
   0% {
     transform: translateY(0); /* no position change */
@@ -107,10 +108,6 @@ nav {
   position: relative;
   z-index: 10000;
   background: var(--almost-white);
-  /*
-  background-color: #85FFBD;
-  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-  */
   box-shadow: var(--smooth-light-shadow);
   transition: var(--smooth);
   z-index: 10000;
@@ -136,7 +133,8 @@ nav ul {
 }
 
 nav ul li {
-  flex: 0.1 1 auto; /* grow shrink basis */
+  /* grow | shrink | basis */
+  flex: 0.1 1 auto;
   padding: 0 1.5rem 0 1.5rem;
   background: transparent;
 }
@@ -173,11 +171,6 @@ header {
   justify-content: center;
   background-color: #85FFBD;
   background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-  /*
-  background: no-repeat center 20% url("../images/christopher-burns-200321-unsplash.jpg");
-  filter: contrast(1.2);
-  background-size: cover;
-  */
   position: absolute;
   top: 0;
   z-index: 2;
@@ -331,7 +324,9 @@ label {
   margin: 0;
 }
 
-label:after { content: ": " }
+label:after {
+  content: ": ";
+}
 
 .label {
   font-size: 0.65vw;
@@ -386,21 +381,21 @@ td::first-letter {
 select {
   width: 100%;
   margin: calc(var(--space)*0.5)
-  0
-  calc(var(--space)*0)
-  0;
+          0
+          calc(var(--space)*0)
+          0;
   padding: calc(var(--space)*1)
-  calc(var(--space)*0.5)
-  calc(var(--space)*1)
-  calc(var(--space)*0.5);
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
   background: white;
 }
 
 .selectdiv {
   margin: calc(var(--space)*0)
-  0
-  calc(var(--space)*1)
-  0;
+          0
+          calc(var(--space)*1)
+          0;
   position: relative;
   border: 1px solid transparent;
   font-size: inherit;
@@ -408,9 +403,9 @@ select {
 
 .selectdiv2 {
   margin: -1rem
-  0
-  calc(var(--space)*0)
-  0;
+          0
+          calc(var(--space)*0)
+          0;
   position: relative;
   border: 1px solid transparent;
   font-size: inherit;
@@ -429,13 +424,13 @@ select {
 .submit {
   width: 100%;
   margin: calc(var(--space)*0)
-  0
-  calc(var(--space)*0)
-  0;
+          0
+          calc(var(--space)*0)
+          0;
   padding: calc(var(--space)*1)
-  calc(var(--space)*0.5)
-  calc(var(--space)*1)
-  calc(var(--space)*0.5);
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
   border: 0 solid transparent;
   background-color: #85FFBD;
   background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
@@ -485,9 +480,9 @@ select {
   width: auto;
   height: auto;
   margin: calc(var(--space)*0)
-  calc(var(--space)*2)
-  calc(var(--space)*0)
-  0;
+          calc(var(--space)*2)
+          calc(var(--space)*0)
+          0;
   background: transparent;
 }
 
@@ -677,9 +672,9 @@ select {
 
 #selTeamResult {
   padding: calc(var(--space)*1)
-  calc(var(--space)*0.5)
-  calc(var(--space)*1)
-  calc(var(--space)*0.5);
+           calc(var(--space)*0.5)
+           calc(var(--space)*1)
+           calc(var(--space)*0.5);
   background: white;
   border: 1px solid transparent;
   font-size: 0.6vw;
@@ -702,7 +697,6 @@ select {
 
 .sideIcon img {
   width: 100%;
-
   /* name | duration | iteration | timing-function */
   animation: updown 5s infinite ease-in-out;
 }
