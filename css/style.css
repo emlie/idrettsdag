@@ -572,6 +572,19 @@ select {
   color: var(--almost-black);
 }
 
+.adminTeams p {
+  padding: var(--space)
+           0
+           calc(var(--space)*4)
+           0;
+  font-size: 0.7vw;
+  text-transform: none;
+}
+
+.adminTeams p::first-letter {
+  text-transform: uppercase;
+}
+
 .adminTeams-teams {
   grid-area: 1 / 18 / span 2 / span 14;
   margin-top: calc(var(--space)*8);

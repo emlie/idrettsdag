@@ -247,6 +247,13 @@ function getTeams(snapshot){
       </option>
       `;
 
+      // show teams in selTeamTeam
+      selTeamTeam.innerHTML += `
+      <option value="${regdTeam}">
+        ${theRegdTeam.name}
+      </option>
+      `;
+
       // show teams in selResultTeam
       selResultTeam.innerHTML += `
       <option value="${regdTeam}">
@@ -358,6 +365,7 @@ function sortResultByTeam(){
   // show the results of the selected team
   tBodyResults.innerHTML = "";
 
+  // show only the results of the selected team
   resultsDB.orderByChild("team")
            .equalTo(theSelResultTeam)
            .on("child_added", getResults);
@@ -371,7 +379,7 @@ function sortResultByTeam(){
 };
 
 
-// use the same method for teams, as for results
+// use the same method for teams, schools, and sports as for results
 // sort teams by team
 function sortTeamsByTeam(){
 
@@ -379,14 +387,12 @@ function sortTeamsByTeam(){
 
   var theSelTeamTeam = selTeamTeam.value;
 
-  // show the teams of the selected team
   tBodyTeams.innerHTML = "";
 
-  teamsDB.orderByChild("team")
+  teamsDB.orderByChild("name")
          .equalTo(theSelTeamTeam)
          .on("child_added", getTeams);
 
-  // if no team is selected, show all results from all teams
   if (theSelTeamTeam == "allTeams") {
     tBodyTeams.innerHTML = "";
     teamsDB.on("child_added", getTeams);
@@ -402,17 +408,36 @@ function sortTeamsBySchool(){
 
   var theSelTeamSchool = selTeamSchool.value;
 
-  // show the results of the selected team
   tBodyTeams.innerHTML = "";
 
   teamsDB.orderByChild("school")
          .equalTo(theSelTeamSchool)
          .on("child_added", getTeams);
 
-  // if no school is selected, show all results from all teams
   if (theSelTeamSchool == "allSchools") {
     tBodyTeams.innerHTML = "";
-    resultsDB.on("child_added", getTeams);
+    teamsDB.on("child_added", getTeams);
+  };
+
+};
+
+
+// sort teams by sport
+function sortTeamsBySport(){
+
+  console.log("testing sortTeamsBySport");
+
+  var theSelTeamSport = selTeamSport.value;
+
+  tBodyTeams.innerHTML = "";
+
+  teamsDB.orderByChild("sport")
+         .equalTo(theSelTeamSport)
+         .on("child_added", getTeams);
+
+  if (theSelTeamSport == "allSports") {
+    tBodyTeams.innerHTML = "";
+    teamsDB.on("child_added", getTeams);
   };
 
 };
